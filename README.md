@@ -1,4 +1,6 @@
 Server Side
+
+
 package applet.text;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,29 +14,22 @@ public class Nivi extends Frame implements Runnable,ActionListener {
      TextField tf = new TextField();
      DataInputStream dti;
      DataOutputStream doi;
-    
     public Nivi() {
         add(tf);
         add(txt);
         add(button);
         setTitle("Nivi");
-
         tf.setBounds(50, 50, 400, 50);  // x, y, width, height
-
         txt.setBounds(50, 170, 400, 200); // example positioning
-
         button.setBounds(200, 400, 80, 30);
         button.addActionListener(this);
         setSize(500, 500);
-
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                 System.exit(0);
             }
         });
-
         setLayout(null);
-
         setVisible(true);
         try {
         	ServerSocket ssoc= new ServerSocket(12000);
@@ -46,7 +41,6 @@ public class Nivi extends Frame implements Runnable,ActionListener {
         Thread t = new Thread(this);
    	 t.setDaemon(true);
         t.start();
-        
     }
     public static void main(String[] args) {
         Nivi nivi = new Nivi();
@@ -73,9 +67,12 @@ public class Nivi extends Frame implements Runnable,ActionListener {
 		}
 	}
 }
+
+
+
+
 client side
 package applet.text;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -90,33 +87,24 @@ public class Sanjay extends Frame implements Runnable,ActionListener{
     TextField tf = new TextField();
     DataInputStream dti;
     DataOutputStream doi;
-   
    public Sanjay() {
-
-        
        add(tf);
        add(txt);
        add(button);
        setTitle("Sanjay");
        tf.setBounds(50, 50, 400, 50);  // x, y, width, height
-
        txt.setBounds(50, 170, 400, 200); // example positioning
-
        button.setBounds(200, 400, 80, 30);
        button.addActionListener(this);
        setSize(500, 500);
-
        addWindowListener(new java.awt.event.WindowAdapter() {
            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
                System.exit(0);
            }
        });
-
        setLayout(null);
-
        setVisible(true);
        try {
-       	
        	Socket soc = new Socket("localhost",12000);
        	dti = new DataInputStream(soc.getInputStream());
        	doi = new DataOutputStream(soc.getOutputStream());
@@ -125,7 +113,6 @@ public class Sanjay extends Frame implements Runnable,ActionListener{
      	 Thread t = new Thread(this);
         	t.setDaemon(true);
              t.start();
-       
    }
    public static void main(String[] args) {
       new Sanjay();
